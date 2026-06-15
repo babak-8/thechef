@@ -1,0 +1,15 @@
+[package]
+name = "thechefmenu-app"
+version = "0.1.0"
+description = "The Chef Menu PHP App"
+
+[dependencies]
+"wasmer/php" = "8.3.3"
+
+[[fs]]
+source = "."
+target = "/app"
+
+[entrypoint]
+command = "php/php"
+args = ["-S", "0.0.0.0:8080", "-t", "/app"]
