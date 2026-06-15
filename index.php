@@ -254,7 +254,7 @@ $lang = isset($_GET['lang']) && in_array($_GET['lang'], $allowed_langs) ? $_GET[
     <header class="sticky top-0 z-40 bg-chef-panel/95 backdrop-blur-md border-b border-chef-line/60">
         <div class="px-4 py-3 flex items-center justify-between gap-2">
             <!-- LOGO -->
-            <a href="?lang=<?php echo $lang; ?>" class="shrink-0 flex items-center gap-2">
+            <a href="?lang=<?php echo $lang; ?>" id="header-logo-link" class="shrink-0 flex items-center gap-2">
                 <img src="logo.png" alt="The Chef Restaurant" style="height: 54px;">
             </a>
 
@@ -361,7 +361,7 @@ $lang = isset($_GET['lang']) && in_array($_GET['lang'], $allowed_langs) ? $_GET[
     <!-- ══════════════ FOOTER ══════════════ -->
     <div class="footer-bar sticky bottom-0 z-40 bg-chef-panel/95 backdrop-blur-md border-t border-chef-line/60 px-4 py-2 flex items-center justify-between">
         <div class="flex items-center gap-2">
-            <a href="?lang=<?php echo $lang; ?>" class="shrink-0 flex items-center">
+            <a href="?lang=<?php echo $lang; ?>" id="footer-logo-link" class="shrink-0 flex items-center">
                 <img src="logo.png" alt="The Chef Restaurant" style="height: 38px;">
             </a>
         </div>
@@ -686,6 +686,8 @@ function setLang(lang) {
 function applyLang(lang) {
     const t = I18N[lang];
     document.documentElement.lang = lang;
+    document.getElementById('header-logo-link').href = '?lang=' + lang;
+    document.getElementById('footer-logo-link').href = '?lang=' + lang;
     document.getElementById('current-lang-text').textContent = lang.toUpperCase();
     document.getElementById('nav-res-text').textContent = t.nav_res;
     document.getElementById('search-input').placeholder = t.search;
